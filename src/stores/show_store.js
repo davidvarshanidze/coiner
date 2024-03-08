@@ -3,17 +3,23 @@ import { create } from 'zustand'
 
 const show_store = create((set) => ({
     graph_data: [],
+
     fetch_data: async (id) => {
-        const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7`)
-        const graph_data = res.data.prices.map(price => {
+        const [graph_res, data_res] = await Promise.all([
+            axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=121`),
+            axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&market_data=true`)
+        ])
+
+        const graph_data = graph_res.data.prices.map(price => {
+            const [timestamp, p] = price;
+            const date = new Date(timestamp).toLocaleDateString("en-uk")
             return {
-                name: 'Page F',
-                uv: 2390,
-                pv: 3800,
-                amt: 2500,
+                Date: date,
+                Price: p,
             };
-        })
-        console.log(res.data);
+        });
+        console.log(data_res)
+        set({graph_data})
     },
 }));
 
