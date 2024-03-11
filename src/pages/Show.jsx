@@ -10,6 +10,9 @@ export default function Show() {
 
     React.useEffect(() => {
         store.fetch_data(params.id)
+        return () => {
+            store.reset();
+        }
     }, []);
 
     if (!store.data) return <></>; 
@@ -17,6 +20,7 @@ export default function Show() {
     return (
         <div>
             <Header back />
+        {store.data && (<>
             <header className='show_header'>
                 <img src={store.data.image.large} alt='surati'/> 
                 <h2>
@@ -73,6 +77,7 @@ export default function Show() {
                         </div> 
                 </div>
             </div>
+        </>)}
         </div>
     );
 }

@@ -5,6 +5,10 @@ const show_store = create((set) => ({
     graph_data: [],
     data: null,
 
+    reset: () => {
+        set({graph_data: [], data: null})
+    },
+
     fetch_data: async (id) => {
         const [graph_res, data_res] = await Promise.all([
             axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=121`),
