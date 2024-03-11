@@ -3,6 +3,7 @@ import home_store from '../stores/home_store'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Listitem from '../components/Listitem'
+import classNames from 'classnames'
 
 export default function Home() {
   const store = home_store()
@@ -17,15 +18,21 @@ export default function Home() {
       <header className='home_search'>
         <div className="width">
           <h2>Search for a coin</h2>
-          <input type="text" value={store.query} onChange={store.set}/>
+          <div className={classNames("home_search_input", {searching: store.searching})}>
+            <input type="text" value={store.query} onChange={store.set_query}/>
+            <img width="20px" src='./spinner.svg'/>
+          </div>
         </div>
       </header>
-      <div>
-      {store.coins.map(coin => {
-        return (
-          <Listitem key={coin.id} coin={coin} />
-        );
-      })}
+      <div className='home_cryptos'>
+        <div className='width'>
+          <h2>Trending Coins</h2>
+          <div className="home_cryptos_list">
+          {store.coins.map((coin) => {
+            return <Listitem key={coin.id} coin={coin} />
+          })} 
+          </div>
+        </div>
       </div>
     </div>
   );
