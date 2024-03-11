@@ -2,6 +2,7 @@ import React from 'react'
 import home_store from '../stores/home_store'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import Listitem from '../components/Listitem'
 
 export default function Home() {
   const store = home_store()
@@ -13,16 +14,19 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <input type="text" value={store.query} onChange={store.set}/>
+      <header className='home_search'>
+        <div className="width">
+          <h2>Search for a coin</h2>
+          <input type="text" value={store.query} onChange={store.set}/>
+        </div>
+      </header>
+      <div>
       {store.coins.map(coin => {
         return (
-          <div key={coin.id}>
-            <Link to={`/${coin.id}`}>
-              {coin.name}
-            </Link>
-          </div>
-        )
+          <Listitem key={coin.id} coin={coin} />
+        );
       })}
+      </div>
     </div>
-  )
+  );
 }
