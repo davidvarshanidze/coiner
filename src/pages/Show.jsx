@@ -56,11 +56,11 @@ export default function Show() {
                             <span>${store.data.market_cap_rank}</span>
                         </div>
                         <div className='show_details_row'>
-                            <h3>24h high</h3>
+                            <h3>24h High</h3>
                             <span>${store.data.market_data.high_24h.usd}</span>
                         </div>
                         <div className='show_details_row'>
-                            <h3>24h low</h3>
+                            <h3>24h Low</h3>
                             <span>${store.data.market_data.low_24h.usd}</span>
                         </div>
                         <div className='show_details_row'>
@@ -72,7 +72,7 @@ export default function Show() {
                             <span>${store.data.market_data.current_price.usd}</span>
                         </div>
                         <div className='show_details_row'>
-                            <h3>1y change</h3>
+                            <h3>1 Year change</h3>
                             <span>${store.data.market_data.price_change_percentage_1y.toFixed(2)}%</span>
                         </div> 
                 </div>
