@@ -22,7 +22,7 @@ export default function Show() {
             <Header back />
         {store.data && (<>
             <header className='show_header'>
-                <img src={store.data.image.large} alt='surati'/> 
+                <img src={store.data.image.large} alt='store_image'/> 
                 <h2>
                     {store.data.name} ({store.data.symbol})
                 </h2>
