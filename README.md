@@ -15,7 +15,7 @@ Welcome to Coiner, a powerful app designed to help you discover and track the la
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/dvarshanidze/cointer.git
+git clone https://github.com/dvarshanidze/coiner.git
 cd coiner
 ```
 
